@@ -20,4 +20,14 @@
 
 如果对 Git 和 GitHub 不太了解，请参考 [Git 官方文档](https://git-scm.com/book/zh/v2) 或者极客时间的[《玩转 Git 三剑客》](https://time.geekbang.org/course/intro/145)视频课程。
 
-## 学号：G20200343080036
+## 学号: G20200343080036
+
+## 姓名: 伟浩
+
+## 班级: 13 期 2 班
+
+## 语言: JS
+
+## 作业链接: https://github.com/linwh203/algorithm013/tree/master/Week_02
+
+## 总结链接: https://github.com/linwh203/algorithm013/blob/master/Week_02/README.md
