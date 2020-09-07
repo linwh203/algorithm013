@@ -35,11 +35,11 @@ var jump = function (nums) {
  * 遍历一个可抵达的区间，从中选出能跳最远的点，就有了新的可抵达的区间，然后跳跃一次，进入新的区间继续遍历寻求最优解
  */
 var jump = function (nums) {
-  let farthestPos = 0 // 记录当前能去到的最远的位置，遍历每个点都会求能跳到的最远位置，与它比较，如果把它大就更新它
+  let farthestPos = 0
   let endOfCanReach = 0
   let steps = 0
   for (let i = 0; i < nums.length - 1; i++) {
-    farthestPos = Math.max(farthestPos, i + nums[i])
+    farthestPos = Math.max(farthestPos, i + nums[i]) // 记录当前能去到的最远的位置，遍历每个点都会求能跳到的最远位置，与它比较，如果把它大就更新它
     if (i === endOfCanReach) {
       endOfCanReach = farthestPos // 可抵达区间的右端位置
       steps++
