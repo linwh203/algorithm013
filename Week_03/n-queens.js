@@ -6,38 +6,36 @@
  */
 var solveNQueens = function (n) {
   const result = []
-  placeQueens(result, n)
+  backTrack(result, n)
   return result
 }
 
-function placeQueens(result, size, board = [], row = 0) {
-  // terminator
-  if (row === size) {
-    buildResult(result, board, size) // 生成棋盘
+function backTrack(result, queens, grid = [], row = 0) {
+  if (row === queens) {
+    buildBoard(result, queens, grid)
     return
   }
-  // subProblems
-  for (let col = 0; col < size; col++) {
-    if (
-      !board.some(
-        (itemCol, itemRow) =>
-          itemCol === col || // 竖向
-          itemCol + itemRow === col + row || // 撇向
-          itemCol - itemRow === col - row // 那向
-      )
-    ) {
-      board.push(col)
-      // drill down
-      placeQueens(result, size, board, row + 1)
-      // reverse state => clear board to empty []
-      board.pop()
+  for (let col = 0; col < queens; col++) {
+    if (isValid(grid, col, row)) {
+      grid.push(col)
+      backTrack(result, queens, grid, row + 1)
+      grid.pop()
     }
   }
 }
 
-function buildResult(result, board, size) {
-  const boardWithQueens = board.map(
-    (col) => ".".repeat(col) + "Q" + ".".repeat(size - col - 1)
+function buildBoard(result, queens, grid) {
+  const board = grid.map(
+    (col) => ".".repeat(col) + "Q" + ".".repeat(queens - col - 1)
   )
-  result.push(boardWithQueens)
+  result.push(board)
+}
+
+function isValid(grid, col, row) {
+  return !grid.some(
+    (itemCol, itemRow) =>
+      itemCol === col ||
+      itemCol + itemRow === col + row ||
+      itemCol - itemRow === col - row
+  )
 }
