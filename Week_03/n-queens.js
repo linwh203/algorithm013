@@ -26,16 +26,17 @@ function backTrack(result, queens, grid = [], row = 0) {
 
 function buildBoard(result, queens, grid) {
   const board = grid.map(
-    (col) => ".".repeat(col) + "Q" + ".".repeat(queens - col - 1)
+    (col) => ".".repeat(col) + "Q" + ".".repeat(queens - 1 - col)
   )
   result.push(board)
 }
 
 function isValid(grid, col, row) {
+  // 攻击线上是否后皇后
   return !grid.some(
     (itemCol, itemRow) =>
-      itemCol === col ||
-      itemCol + itemRow === col + row ||
-      itemCol - itemRow === col - row
+      itemCol === col || // 竖向有皇后
+      itemCol + itemRow === col + row || // 撇向有皇后
+      itemCol - itemRow === col - row // 那向有皇后
   )
 }
